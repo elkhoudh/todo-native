@@ -70,21 +70,38 @@ export default class App extends React.Component {
         <ScrollView>
           {this.state.todos &&
             this.state.todos.map(todo => (
-              <Text
+              <View
                 key={todo.id}
                 style={
                   todo.completed
                     ? {
-                        textDecorationLine: "line-through",
-                        padding: 10,
-                        fontSize: 42
+                        borderWidth: 1,
+                        borderRadius: 50,
+                        marginTop: 20,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        backgroundColor: "green",
+                        color: "white"
                       }
-                    : { padding: 10, fontSize: 42 }
+                    : {
+                        borderWidth: 1,
+                        borderRadius: 50,
+                        marginTop: 20,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        color: "white"
+                      }
                 }
-                onPress={() => this.markCompleted(todo.id, todo.completed)}
               >
-                {todo.task}
-              </Text>
+                <Text
+                  style={{ color: "black", padding: 20, fontSize: 30 }}
+                  onPress={() => this.markCompleted(todo.id, todo.completed)}
+                >
+                  {todo.task}
+                </Text>
+              </View>
             ))}
         </ScrollView>
       </View>
@@ -93,12 +110,6 @@ export default class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  },
   input: {
     padding: 40
   }
